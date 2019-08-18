@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask,render_template
 from flask_restful import Api
 from flask_jwt import JWT
 
@@ -17,6 +17,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:/
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'jose'
 api = Api(app)
+
+@app.route('/index')
+def index():
+    return render_template('index.html')
 
 jwt = JWT(app, authenticate, identity)  # /auth
 
