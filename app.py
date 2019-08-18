@@ -18,7 +18,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'jose'
 api = Api(app)
 
-@app.route('/index')
+@app.route('/')
 def index():
     return render_template('index.html')
 
